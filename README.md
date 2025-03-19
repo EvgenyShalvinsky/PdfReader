@@ -1,2 +1,4 @@
 # PdfReader
-Read text information and barcodes from pdf files 
+Метод "scan_pdf(pdf_path, out_path)" создан для чтения текста и данных штрих-кодов из файла .pdf и записи в словарь text_per_page[dictionary_key] 
+в качестве переменные pdf_path и out_path, по-этому для корректной работы метода в установленом окружении должна быть папка "Data" или изменен путь.
+
