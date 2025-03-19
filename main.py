@@ -51,7 +51,7 @@ def read_code(out_path):
     for barcode in detectedBarcodes:
         (x, y, w, h) = barcode.rect
         cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 0), 5)
-        barcode_data = str(barcode.data).replace('\'', '').replace('b\'', '')
+        barcode_data = str(barcode.data).replace('\'', '').replace('b', '')
         page_text.append(barcode_data)
         page_content.append(f'{barcode_data}\n')
 
