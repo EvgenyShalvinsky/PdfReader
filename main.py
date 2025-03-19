@@ -13,7 +13,7 @@ from pyzbar.pyzbar import decode, ZBarSymbol
 # Пути к файлу для обработки
 pdf_path = '.\\Data\\test.pdf'
 # Временный файл для чтения штрих-кодов
-out_path = '.\\Out\\test.png'
+out_path = '.\\Data\\test.png'
 # Создание объекта .pdf файла
 pdfFileObj = open(pdf_path, 'rb')
 # Create a pdf reader object
