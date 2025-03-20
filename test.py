@@ -1,7 +1,7 @@
 import os.path
 from main import scan_pdf, read_text, read_code, pdf_path, out_path
 
-
+#Сверяем тестовые данные полученные из test.pdf c эталонным словарем проверяем и удаление мусорного файла .png
 def test_scan():
     test_dict = {'Barcode_1': ' 1',
                  'Barcode_2': ' tst',
