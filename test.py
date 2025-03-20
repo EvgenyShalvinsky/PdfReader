@@ -1,7 +1,7 @@
 import os.path
-from main import scan_pdf, read_text, read_code, pdf_path, out_path
+from main import scan_pdf, pdf_path, out_path
 
-#Сверяем тестовые данные полученные из test.pdf c эталонным словарем проверяем и удаление мусорного файла .png
+
 def test_scan():
     test_dict = {'Barcode_1': ' 1',
                  'Barcode_2': ' tst',
@@ -24,8 +24,9 @@ def test_scan():
                  'Qty': ' 1',
                  'DOM': ' 13.04.2022',
                  'LOT': ' 1',
-                 'NOTES': 'inspection notes'}
-    real_dict = scan_pdf(pdf_path, out_path)
-    assert real_dict == test_dict
+                 'NOTES': 'inspection notes'} \
+    # Сверяем тестовые данные полученные из test.pdf c эталонным словарем
+    assert scan_pdf(pdf_path, out_path) == test_dict
+    # проверяем  удаление мусорного файла .png
     assert os.path.exists(out_path) == False
 

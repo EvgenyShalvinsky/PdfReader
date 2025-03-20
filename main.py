@@ -99,7 +99,7 @@ def read_text(pdf_path):
                 page_content.append(str(line_text).replace('#', ''))
 
 
-#Основная функция
+#Основная функция, так же проверяет
 def scan_pdf(pdf_path, out_path):
     convert_to_images(pdf_path, out_path)
     read_code(out_path)
@@ -132,6 +132,20 @@ def scan_pdf(pdf_path, out_path):
     pdfFileObj.close()
     # Удаление мусора
     os.remove(out_path)
+
+    if content_pdf['Barcode_1'] == content_pdf['LOT']:
+        pass
+    elif content_pdf['Barcode_1'] != content_pdf['LOT']:
+        print(f'НЕ ВЕРНЫЙ LOT ШТРИХКОД')
+    else:
+        pass
+    if content_pdf['Barcode_2'] == content_pdf['PN']:
+        pass
+    elif content_pdf['Barcode_2'] == content_pdf['PN']:
+        print(f'НЕ ВЕРНЫЙ PN ШТРИХКОД')
+    else:
+        pass
+
     return content_pdf
 
 #-------ТЕЛО----------------------------------------
