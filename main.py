@@ -38,7 +38,7 @@ def get_text(element):
 
 # Функция для поиска баркодов на изображениее
 def draw_barcode(decoded, image):
-    # Ищем штрих-код и рисуем поля
+    # Ищем штрих-код 
     image = cv2.rectangle(image, (decoded.rect.left, decoded.rect.top),
                           (decoded.rect.left + decoded.rect.width, decoded.rect.top + decoded.rect.height),
                           color=(0, 255, 0),
@@ -89,19 +89,26 @@ def read_code(out_path):
 
 # Функция для чтения текста из файла .pdf
 def read_text(pdf_path):
+    #получаем layout 
     for page_layout in extract_pages(pdf_path):
+        #получаем element 
         for element in page_layout:
+            #отбираем текст из элементов LTTextContainer
             if isinstance(element, LTTextContainer):
                 line_text = get_text(element)
+                #Заполняем список page_content
                 page_content.append(str(line_text).replace('#', ''))
 
 
 # Основная функция 
 def scan_pdf(pdf_path, out_path):
+    #Ковертируем .pdf в .png
     convert_to_images(pdf_path, out_path)
+    #Записываем штрих-кода из .png в список page_content
     read_code(out_path)
+    #Записываем текст из .pdf в список page_content
     read_text(pdf_path)
-    #Заполняем словарь
+    #Заполняем словарь content_pdf из списка page_content 
     content_pdf['Barcode_1'] = page_content[0].split(':')[1].replace('\n', '')
     content_pdf['Barcode_2'] = page_content[1].split(':')[1].replace('\n', '')
     content_pdf['COMPANY'] = page_content[2].replace('\n', '')
@@ -148,4 +155,5 @@ def scan_pdf(pdf_path, out_path):
 
 # -------ТЕЛО----------------------------------------
 if __name__ == '__main__':
+    #Выводим словарь на экран
     print(scan_pdf(pdf_path, out_path))
