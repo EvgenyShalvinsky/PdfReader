@@ -1,8 +1,10 @@
 import pytest
-from main import scan_pdf, read_text, read_code, pdf_path, out_path
+from main import convert_to_images, scan_pdf, read_text, read_code, pdf_path, out_path
+import os
 
-def test_text():
-
+def test_img_null():
+    convert_to_images(pdf_path, out_path)
+    assert os.path.getsize(out_path) > 0
 
 def test_scan():
     test_dict = {'Barcode_1': ' 1',

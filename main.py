@@ -9,7 +9,8 @@ from pdfminer.high_level import extract_pages, extract_text
 from pdfminer.layout import LTTextContainer
 # Библиотека для чтения штрих-кодов
 from pyzbar.pyzbar import decode, ZBarSymbol
-import re
+# Библиотека для очистки мусора
+import os
 #-----НАСТРОЙКИ И ПЕРЕМЕННЫЕ-------------------------------------------
 # Пути к файлу для обработки
 pdf_path = '.\\Data\\test.pdf'
@@ -29,6 +30,7 @@ page_text = []
 text_from_images = []
 #Список с общим контентом
 page_content = []
+
 
 #-----ФУНКЦИИ-------------------------------------------
 # Функция для получения текста из .pdf
@@ -128,7 +130,8 @@ def scan_pdf(pdf_path, out_path):
     content_pdf['NOTES'] = page_content[22].replace('\n', '')
     # Закрываем объект файла pdf
     pdfFileObj.close()
-    # Отображение контента
+    # Удаление мусора
+    os.remove(out_path)
     return content_pdf
 
 #-------ТЕЛО----------------------------------------
