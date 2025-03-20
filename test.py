@@ -19,7 +19,7 @@ def mock_pdf_file(tmp_path):
     # Создаем временный PDF файл
     pdf_file = tmp_path / ".\\Data\\test.pdf"
     with open(pdf_file, "wb") as f:
-        f.write(b"%PDF-1.4\n%...")  # Минимальная структура PDF
+        f.write(b"%PDF-1.4\n%...")  
     return pdf_file
 
 
