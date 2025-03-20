@@ -9,6 +9,7 @@ from pdfminer.high_level import extract_pages, extract_text
 from pdfminer.layout import LTTextContainer
 # Библиотека для чтения штрих-кодов
 from pyzbar.pyzbar import decode, ZBarSymbol
+import re
 #-----НАСТРОЙКИ И ПЕРЕМЕННЫЕ-------------------------------------------
 # Пути к файлу для обработки
 pdf_path = '.\\Data\\test.pdf'
@@ -21,7 +22,7 @@ pdfRead = PyPDF2.PdfReader(pdfFileObj)
 # Словарь для записи в него данных
 text_per_page = {}
 # Словарь для записи контента
-#content_pdf = {}
+content_pdf = {}
 #Список с текстовыми данными
 page_text = []
 #Список с данными штрих-кодов
@@ -106,21 +107,38 @@ def scan_pdf(pdf_path, out_path):
     convert_to_images(pdf_path, out_path)
     read_code(out_path)
     read_text(pdf_path)
-
     dictionary_key = 'Page'
     text_per_page[dictionary_key] = [page_content]
+    content_pdf['Barcode_1'] = page_content[0].split(':')[1].replace('\n', '')
+    content_pdf['Barcode_2'] = page_content[1].split(':')[1].replace('\n', '')
+    content_pdf['COMPANY'] = page_content[2].replace('\n', '')
+    content_pdf['PN'] = page_content[3].split(':')[1].replace('\n', '')
+    content_pdf['DESCRIPTION'] = page_content[4].split(':')[1].replace('\n', '')
+    content_pdf['LOCATION'] = page_content[5].split(':')[1].replace('\n', '')
+    content_pdf['RECEIVER'] = page_content[6].split(':')[1].replace('\n', '')
+    content_pdf['EXP DATE'] = page_content[7].split(':')[1].replace('\n', '')
+    content_pdf['CERT SOURCE'] = page_content[8].split(':')[1].replace('\n', '')
+    content_pdf['SN'] = page_content[9].split(':')[1].replace('\n', '')
+    content_pdf['CONDITION'] = page_content[10].split(':')[1].replace('\n', '')
+    content_pdf['UOM'] = page_content[11].split(':')[1].replace('\n', '')
+    content_pdf['PO'] = page_content[12].split(':')[1].replace('\n', '')
+    content_pdf['REC.DATE'] = page_content[13].split(':')[1].replace('\n', '')
+    content_pdf['MFG'] = page_content[14].split(':')[1].replace('\n', '')
+    content_pdf['BATCH'] = page_content[15].split(':')[1].replace('\n', '')
+    content_pdf['REMARK'] = page_content[16].split(':')[1].replace('\n', '')
+    content_pdf['TAGGED BY'] = page_content[17].split(':')[1].replace('\n', '')
+    content_pdf['Qty'] = page_content[18].split(':')[1].replace('\n', '')
+    content_pdf['DOM'] = page_content[19].split(':')[1].replace('\n', '')
+    content_pdf['LOT'] = page_content[20].split(':')[1].replace('\n', '')
+    content_pdf['NOTES'] = page_content[22].replace('\n', '')
     # Закрываем объект файла pdf
     pdfFileObj.close()
     # Отображение контента
-    result = ''.join(text_per_page['Page'][0])
-    # Отображение контента
-
-    return result
+    return content_pdf
 
 #-------ТЕЛО----------------------------------------
 if __name__ == '__main__':
-    data_from_pdf = scan_pdf(pdf_path, out_path)
-    print(data_from_pdf)
+    print(scan_pdf(pdf_path, out_path))
 
 
 
