@@ -7,5 +7,5 @@ $pip3 install fitz
 $pip3 install PyPDF2
 $pip3 install pdfminer
 $pip3 install pyzbar
-
+$pip3 install pytest
 
