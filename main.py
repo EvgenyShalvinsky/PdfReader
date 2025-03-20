@@ -128,13 +128,14 @@ def scan_pdf(pdf_path, out_path):
     pdfFileObj.close()
     # Удаление мусора
     os.remove(out_path)
-
+    #Проверяем штрих-код LOT
     if content_pdf['Barcode_1'] == content_pdf['LOT']:
         pass
     elif content_pdf['Barcode_1'] != content_pdf['LOT']:
         print(f'НЕ ВЕРНЫЙ LOT ШТРИХКОД')
     else:
         pass
+    #Проверяем штрих-код PN    
     if content_pdf['Barcode_2'] == content_pdf['PN']:
         pass
     elif content_pdf['Barcode_2'] == content_pdf['PN']:
