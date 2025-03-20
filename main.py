@@ -96,7 +96,7 @@ def read_text(pdf_path):
                 page_content.append(str(line_text).replace('#', ''))
 
 
-# Основная функция, так же проверяет
+# Основная функция 
 def scan_pdf(pdf_path, out_path):
     convert_to_images(pdf_path, out_path)
     read_code(out_path)
