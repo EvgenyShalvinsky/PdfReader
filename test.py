@@ -17,7 +17,7 @@ from main import (
 @pytest.fixture
 def mock_pdf_file(tmp_path):
     # Создаем временный PDF файл
-    pdf_file = tmp_path / "mock.pdf"
+    pdf_file = tmp_path / ".\\Data\\test.pdf"
     with open(pdf_file, "wb") as f:
         f.write(b"%PDF-1.4\n%...")  # Минимальная структура PDF
     return pdf_file
@@ -26,9 +26,9 @@ def mock_pdf_file(tmp_path):
 @pytest.fixture
 def mock_image_file(tmp_path):
     # Создаем временный PNG файл
-    image_file = tmp_path / "mock.png"
+    image_file = tmp_path / ".\\Data\\test.png"
     # Создаем пустое изображение и сохраняем его
-    img = cv2.imread('path_to_some_sample_image.png')  # Замените на путь к изображению
+    img = cv2.imread('.\\Data\\clear.png')
     if img is not None:
         cv2.imwrite(str(image_file), img)
     return image_file
