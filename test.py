@@ -1,9 +1,5 @@
 import os.path
-
-import pytest
 from main import scan_pdf, read_text, read_code, pdf_path, out_path
-
-
 
 
 def test_scan():
