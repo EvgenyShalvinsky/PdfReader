@@ -1,7 +1,9 @@
+import os.path
+
 import pytest
 from main import scan_pdf, read_text, read_code, pdf_path, out_path
 
-def test_text():
+
 
 
 def test_scan():
@@ -29,4 +31,5 @@ def test_scan():
                  'NOTES': 'inspection notes'}
     real_dict = scan_pdf(pdf_path, out_path)
     assert real_dict == test_dict
+    assert os.path.exists(out_path) == False
 
