@@ -101,6 +101,7 @@ def scan_pdf(pdf_path, out_path):
     convert_to_images(pdf_path, out_path)
     read_code(out_path)
     read_text(pdf_path)
+    #Заполняем словарь
     content_pdf['Barcode_1'] = page_content[0].split(':')[1].replace('\n', '')
     content_pdf['Barcode_2'] = page_content[1].split(':')[1].replace('\n', '')
     content_pdf['COMPANY'] = page_content[2].replace('\n', '')
