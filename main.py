@@ -82,8 +82,6 @@ def read_code(out_path):
         text_from_images.append(barcode_data)
         page_content.append('Barcode_'+str(i)+' : '+str(barcode_data)+'\n')
 
-
-
     # Cмотреть что насканировал
     #cv2.imshow("Image", image)
     #cv2.waitKey(0)
@@ -97,9 +95,6 @@ def read_text(pdf_path):
                 line_text = get_text(element)
                 page_text.append(str(line_text).replace('#', ''))
                 page_content.append(str(line_text).replace('#', ''))
-
-
-
 
 
 #Основная функция
@@ -138,7 +133,7 @@ def scan_pdf(pdf_path, out_path):
 
 #-------ТЕЛО----------------------------------------
 if __name__ == '__main__':
-    print(scan_pdf(pdf_path, out_path))
+   print(scan_pdf(pdf_path, out_path))
 
 
 
